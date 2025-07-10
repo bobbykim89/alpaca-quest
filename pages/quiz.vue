@@ -35,23 +35,24 @@ const onClickRestart = (e: Event) => {
   questionnaireStore.resetState()
 }
 
-onMounted(() => {
-  recommendation.value = {
-    career_recommendations: [
-      'Data Scientist',
-      'Software Engineer',
-      'Research Scientist',
-      'Systems Analyst',
-      'Technical Project Manager',
-      'Machine Learning Engineer',
-      'Cybersecurity Analyst',
-      'DevOps Engineer',
-      'UX/UI Designer',
-    ],
-    reasoning:
-      'Based on your interests in Technology and Science, along with your skills in analytical thinking and technical abilities, careers in data science, software development, and research are well-suited to help you advance in your field while making a positive impact.',
-  }
-})
+// onMounted(() => {
+//   // placeholder data for testing purpose
+//   recommendation.value = {
+//     career_recommendations: [
+//       'Data Scientist',
+//       'Software Engineer',
+//       'Research Scientist',
+//       'Systems Analyst',
+//       'Technical Project Manager',
+//       'Machine Learning Engineer',
+//       'Cybersecurity Analyst',
+//       'DevOps Engineer',
+//       'UX/UI Designer',
+//     ],
+//     reasoning:
+//       'Based on your interests in Technology and Science, along with your skills in analytical thinking and technical abilities, careers in data science, software development, and research are well-suited to help you advance in your field while making a positive impact.',
+//   }
+// })
 </script>
 
 <template>
