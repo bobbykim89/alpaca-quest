@@ -36,7 +36,7 @@ const menuItemData = reactive<{
   socialUrl: SocialUrl
   menu: MenuItemType[]
 }>({
-  title: 'ALPACA<span class="text-primary">Quest</span>',
+  title: 'ALPACA<span class="text-warning">Quest</span>',
   logoMobile: '/img/logo64.webp',
   logo: '/img/logo192.webp',
   logoAlt: 'ALPACA Quest Logo',
@@ -124,7 +124,7 @@ onMounted(() => {
         </div>
       </template>
     </header-horizontal>
-    <div class="bg-dark-1 min-h-[60dvh]">
+    <div class="bg-light-4 min-h-[60dvh]">
       <div class="container">
         <Alert
           :show="alertMessage !== null"
@@ -161,9 +161,10 @@ onMounted(() => {
       :menu-item-as-link="false"
       :social-links="menuItemData.socialUrl"
       bg-color="light-2"
-      border-top-color="primary"
+      border-top-color="warning"
       menu-text-color="dark-4"
       social-icon-color="dark-4"
+      highlight-color="warning"
       @logo-click="handleTitleClick"
       @menu-click="handleFooterMenuClick"
     >
