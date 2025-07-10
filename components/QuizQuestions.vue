@@ -52,7 +52,7 @@ const handleSubmit = () => {
 <template>
   <div>
     <div>
-      <h2 class="h2-md mb-sm">{{ formattedQuestion }}</h2>
+      <h2 class="h2-sm mb-sm">{{ formattedQuestion }}</h2>
       <form @submit.prevent="handleSubmit">
         <div v-if="!multipleAnswers" class="mb-sm">
           <!-- single answer question -->
@@ -64,6 +64,7 @@ const handleSubmit = () => {
             <mcl-input-radio
               :id="`${id}-${idx}`"
               :value="item"
+              bg-color="warning"
               :checked="selectedSingleAnswerRef === item"
               @change="selectSingleValueQuestion"
             />
@@ -87,8 +88,22 @@ const handleSubmit = () => {
           </div>
         </div>
         <div class="flex justify-end">
-          <button role="button" type="submit" class="btn btn-warning">
-            Next Question
+          <button
+            role="button"
+            type="submit"
+            class="btn btn-warning btn-round flex justify-between items-center gap-1"
+          >
+            Continue
+            <svg
+              class="h-[14px]"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+            >
+              <!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+              />
+            </svg>
           </button>
         </div>
       </form>

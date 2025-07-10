@@ -1,51 +1,32 @@
 <template>
-  <div class="px-2xs py-md">
+  <div class="w-full lg:max-w-[60%] mx-auto px-2xs py-md">
     <div
-      class="bg-light-1 border rounded-md drop-shadow-md px-xs py-sm md:px-sm md:py-md"
+      class="bg-light-1 border rounded-md drop-shadow-md px-xs py-sm md:px-md md:py-md"
     >
-      <div v-if="loading" class="grid place-items-center">
-        <div class="p-md md:p-lg">
-          <div
-            class="aspect-square w-3xl rounded-full border-8 border-r-warning animate-spin"
-          />
+      <div class="flex flex-col justify-center items-center">
+        <NuxtImg src="/img/logo512.webp" width="384" />
+        <div>
+          <h2 class="h2-md mb-sm">
+            Discover Your Ideal Career Path with Alpaca
+          </h2>
+          <p class="mb-sm">
+            AlpacaQuest is an AI-powered career discovery app designed to guide
+            you toward your ideal profession. Through a series of thoughtful,
+            dynamic questions, Alpaca learns about your interests, goals, and
+            strengths—then provides personalized career recommendations tailored
+            just for you. Whether you're a student, a professional exploring new
+            directions, or someone seeking a meaningful change, Alpaca helps you
+            take the next confident step in your career journey.
+          </p>
         </div>
-      </div>
-      <div v-else>
-        <div v-if="currentQuestion && recommendation === null">
-          <quiz-questions
-            :id="currentQuestion.id"
-            :question="currentQuestion.question"
-            :options="currentQuestion.options"
-            :multiple-answers="currentQuestion.multiple_answers"
-            @answer-submit="onClickNext"
-          />
-        </div>
-        <div v-if="recommendation">
-          <career-recommendation
-            :career-recommendations="recommendation.career_recommendations"
-            :reasoning="recommendation.reasoning"
-          />
-        </div>
+        <NuxtLink to="/quiz" class="btn btn-round btn-warning btn-invert"
+          >Go Take Quiz</NuxtLink
+        >
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import CareerRecommendation from '@/components/CareerRecommendation.vue'
-import QuizQuestions from '@/components/QuizQuestions.vue'
-import { useInitStore, useQuestionnaireStore } from '@/stores'
-import { storeToRefs } from 'pinia'
-
-const initStore = useInitStore()
-const questionnaireStore = useQuestionnaireStore()
-const { loading } = storeToRefs(initStore)
-const { currentQuestion, recommendation } = storeToRefs(questionnaireStore)
-
-const onClickNext = async (val: string[]) => {
-  questionnaireStore.setAnswer(val)
-  await questionnaireStore.submitAnswer()
-}
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

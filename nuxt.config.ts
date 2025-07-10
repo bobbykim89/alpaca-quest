@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@pinia/nuxt',
+    '@nuxt/image',
     '@nuxtjs/tailwindcss',
   ],
   app: {
@@ -24,7 +25,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: [],
+  css: ['~/assets/css/page_transition.scss'],
   tailwindcss: {
     configPath: 'tailwind.config.ts',
     exposeConfig: false,
