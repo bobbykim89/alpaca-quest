@@ -1,0 +1,21 @@
+import { z } from 'zod'
+
+const questionsSchema = z.object({
+  id: z.number(),
+  question: z.string(),
+  options: z.array(z.string()),
+  multiple_answers: z.boolean(),
+})
+
+const answersSchema = z.object({
+  id: z.number(),
+  question: z.string(),
+  selections: z.array(z.string()),
+})
+
+export const postRequestBodySchema = z.object({
+  questions: questionsSchema,
+  answers: answersSchema,
+})
+
+export type PostRequestBody = z.infer<typeof postRequestBodySchema>
