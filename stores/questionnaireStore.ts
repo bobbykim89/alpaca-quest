@@ -21,6 +21,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
 
   // methods
   const getInitialQuestion = async () => {
+    initStore.setLoading(true)
     const { data: res } = await useFetch<QuestionType>('/api/questionnaire', {
       method: 'GET',
     })
@@ -37,6 +38,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
       question: res.value.question,
       selections: [],
     }
+    initStore.setLoading(false)
   }
   const setAnswer = (answer: string[]) => {
     if (currentAnswer.value === null) return
@@ -62,7 +64,6 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
       return
     }
     answers.value.push(currentAnswer.value)
-    // console.log(answers.value)
     const res = await $fetch<PostResponseType>('/api/questionnaire', {
       method: 'POST',
       body: { questions: questions.value, answers: answers.value },

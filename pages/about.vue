@@ -4,7 +4,7 @@ import { useRequestURL } from '#app'
 const url = useRequestURL()
 
 useHead({
-  title: 'About | Manguito Page',
+  title: 'About | ALPACAQuest',
   meta: [
     { property: 'og:title', content: 'About | ALPACAQuest' },
     { property: 'og:url', content: url.href },
@@ -35,7 +35,9 @@ const socialUrls = {
 
 <template>
   <div class="container">
-    <div class="flex justify-center items-center min-h-[75vh] px-xs py-md">
+    <div
+      class="w-full lg:max-w-[70%] mx-auto flex justify-center items-center min-h-[75vh] px-xs py-md"
+    >
       <div
         class="p-md md:px-lg md:py-xl bg-light-3 max-w-screen-lg rounded-md drop-shadow-md"
       >

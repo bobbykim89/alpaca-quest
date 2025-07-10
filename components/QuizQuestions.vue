@@ -23,7 +23,6 @@ const checkMultipleValueQuestion = (
   val: string | number
 ) => {
   e.preventDefault()
-  console.log(typeof val)
   if (typeof val !== 'string') return
   if (checked) {
     selectedMultipleAnswerRef.value.push(val)
@@ -47,6 +46,15 @@ const handleSubmit = () => {
     selectedMultipleAnswerRef.value = []
   }
 }
+const isButtonDisabled = computed(() => {
+  if (
+    selectedSingleAnswerRef.value === '' &&
+    selectedMultipleAnswerRef.value.length === 0
+  ) {
+    return true
+  }
+  return false
+})
 </script>
 
 <template>
@@ -89,15 +97,17 @@ const handleSubmit = () => {
         </div>
         <div class="flex justify-end">
           <button
+            :disabled="isButtonDisabled"
             role="button"
             type="submit"
-            class="btn btn-warning btn-round flex justify-between items-center gap-1"
+            class="btn btn-warning btn-round flex justify-between items-center gap-1 disabled:cursor-not-allowed disabled:btn-light-4 disabled:text-dark-1"
           >
             Continue
             <svg
               class="h-[14px]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 320 512"
+              fill="currentColor"
             >
               <!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
               <path
