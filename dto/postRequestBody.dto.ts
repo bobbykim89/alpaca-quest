@@ -14,8 +14,8 @@ const answersSchema = z.object({
 })
 
 export const postRequestBodySchema = z.object({
-  questions: questionsSchema,
-  answers: answersSchema,
+  questions: z.array(questionsSchema),
+  answers: z.array(answersSchema),
 })
 
 export type PostRequestBody = z.infer<typeof postRequestBodySchema>

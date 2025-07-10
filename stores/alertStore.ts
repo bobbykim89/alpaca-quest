@@ -1,4 +1,4 @@
-import { ColorPalette } from '@bobbykim/manguito-theme'
+import type { ColorPalette } from '@bobbykim/manguito-theme'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
@@ -12,7 +12,7 @@ export const useAlertStore = defineStore('alert', () => {
     setTimeout(() => {
       alertMessage.value = null
       aleertColor.value = 'danger'
-    })
+    }, timeout)
   }
   const setAlert = (
     message: string,

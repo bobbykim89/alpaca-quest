@@ -25,3 +25,10 @@ export type SubmissionType = {
   questions: QuestionType[]
   answers: AnswerType[]
 }
+
+export type QuizQuestionComponentProps = {
+  id: number
+  question: string
+  options: string[]
+  multipleAnswers: boolean
+}
