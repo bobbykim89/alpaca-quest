@@ -1,23 +1,22 @@
-# Nuxt Minimal Starter
+# ALPACA-Quest
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<div align="center">
+  <a href="https://alpaca-quest.vercel.app/" target="_blank">
+    <img width="180" src="public/web-app-manifest-512x512.png" alt="ALPACAQuest Logo" />
+  </a>
+</div>
+
+A repository for source code of [ALPACA Quest](https://alpaca-quest.vercel.app/) project an AI-powered app that helps you discover the best career for you through personalized questions and smart recommendations.
+
+Powered by Nuxt 3 and Typescript.
 
 ## Setup
 
 Make sure to install dependencies:
 
 ```bash
-# npm
-npm install
-
 # pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -25,17 +24,8 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
 # pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -43,33 +33,26 @@ bun run dev
 Build the application for production:
 
 ```bash
-# npm
-npm run build
-
 # pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
 # pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Tech stack
+
+> Vue
+> Nuxt 3
+> Nitro (H3)
+> TailwindCSS
+> vueuse
+> Manguito Component Library (MCL)
+> Zod
+> Pinia
