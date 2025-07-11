@@ -85,12 +85,13 @@ const isButtonDisabled = computed(() => {
           <div
             v-for="(option, idx) in options"
             :key="idx"
-            class="flex gap-2xs mb-2xs last:mb-0 items-center"
+            class="flex gap-2xs mb-2xs last:mb-0"
           >
             <mcl-checkbox
               :id="`${id}-${idx}`"
               :value="option"
               rounded
+              check-color="dark-3"
               @checkbox-click="checkMultipleValueQuestion"
             /><label :for="`${id}-${idx}`">{{ option }}</label>
           </div>
@@ -120,5 +121,3 @@ const isButtonDisabled = computed(() => {
     </div>
   </div>
 </template>
-
-<style scoped></style>

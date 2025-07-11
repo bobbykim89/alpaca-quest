@@ -15,8 +15,8 @@ importers:
         specifier: ^0.9.3
         version: 0.9.3(typescript@5.8.3)
       '@bobbykim/mcl-forms':
-        specifier: ^0.9.3
-        version: 0.9.3(typescript@5.8.3)
+        specifier: ^0.9.4
+        version: 0.9.4(typescript@5.8.3)
       '@nuxt/eslint':
         specifier: 1.5.2
         version: 1.5.2(@vue/compiler-sfc@3.5.17)(eslint@9.30.1(jiti@2.4.2))(magicast@0.3.5)(typescript@5.8.3)(vite@7.0.3(@types/node@24.0.12)(jiti@2.4.2)(sass@1.89.2)(terser@5.43.1)(yaml@2.8.0))
@@ -213,8 +213,8 @@ packages:
   '@bobbykim/mcl-footer@0.9.3':
     resolution: {integrity: sha512-GDdvkiWzI82dsrrb8SswHzjX/lXfzk94H7ETK40xtYQjGdyE9lIea/xXD+5fG98Ox3YZ3MUtMCM7jlUIxGXsCQ==}
 
-  '@bobbykim/mcl-forms@0.9.3':
-    resolution: {integrity: sha512-YggSpAF8+w/U7ik3rPg5DuBOJBDBfokbaZ1mH5LQCzeNyUk3OB/gvAhjkCs4MQFhWGGA3hQqVXa4ufa9r+i36g==}
+  '@bobbykim/mcl-forms@0.9.4':
+    resolution: {integrity: sha512-iUPOboIeCjgWFmK5bIZ5CP8Ighi//NPb3NDMkpLTwkTYq26kkUx+WgzS4aEl2NxPzH52KRKIu1Tz8ynjBP8lzQ==}
 
   '@capsizecss/metrics@3.5.0':
     resolution: {integrity: sha512-Ju2I/Qn3c1OaU8FgeW4Tc22D4C9NwyVfKzNmzst59bvxBjPoLYNZMqFYn+HvCtn4MpXwiaDtCE8fNuQLpdi9yA==}
@@ -5151,7 +5151,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@bobbykim/mcl-forms@0.9.3(typescript@5.8.3)':
+  '@bobbykim/mcl-forms@0.9.4(typescript@5.8.3)':
     dependencies:
       '@bobbykim/manguito-theme': 0.25.0(typescript@5.8.3)
       '@floating-ui/vue': 1.1.7(vue@3.5.17(typescript@5.8.3))
