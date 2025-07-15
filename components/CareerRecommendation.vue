@@ -1,36 +1,137 @@
 <script setup lang="ts">
-defineProps<{
+import type { DegreeRecommendationStoreDataType } from '@/types/index.type'
+
+const props = defineProps<{
   careerRecommendations: string[]
   reasoning: string
+  degreeRecommendations: DegreeRecommendationStoreDataType[]
+  loading: boolean
+  currentCareerId: number | null
 }>()
+
+const showDegreeRecommendation = ref<boolean>(false)
 
 const emit = defineEmits<{
   (e: 'reset-click', event: Event): void
+  (e: 'career-click', event: Event, idx: number, career: string): void
+  (e: 'degree-click', event: Event, title: string, desc: string): void
 }>()
+
+const onGoBack = () => {
+  showDegreeRecommendation.value = false
+}
 
 const handleRestartClick = (e: Event) => {
   emit('reset-click', e)
 }
+const handleCareerBtnClick = (e: Event, idx: number, career: string) => {
+  emit('career-click', e, idx, career)
+  showDegreeRecommendation.value = true
+}
+const handleDegreeBtnClick = (e: Event, title: string, desc: string) => {
+  emit('degree-click', e, title, desc)
+}
+
+const getActiveDegreeRecommendationInfo =
+  computed<DegreeRecommendationStoreDataType | null>(() => {
+    const { degreeRecommendations, currentCareerId } = props
+    const currentDegreeRecommendation = degreeRecommendations.find(
+      (item) => item.id === currentCareerId
+    )
+    if (currentDegreeRecommendation) return currentDegreeRecommendation
+    return null
+  })
 </script>
 
 <template>
   <div>
-    <h2 class="h2-sm mb-sm">
-      Based on your answers,<br />
-      we recommend the following career paths for you:
-    </h2>
-    <div class="pl-sm">
-      <ul class="mcl-list mcl-list-lg mcl-list-warning mb-sm">
-        <li v-for="(item, idx) in careerRecommendations" :key="idx">
-          <strong>
+    <transition name="fade" mode="out-in">
+      <div v-if="!showDegreeRecommendation">
+        <div class="mb-sm">
+          <h2 class="h2-sm mb-2xs">
+            Based on your answers,<br />
+            we recommend the following career paths for you:
+          </h2>
+          <p class="text-sm text-dark-1">
+            *Select a career path to view additional details.
+          </p>
+        </div>
+        <!-- career options grid -->
+        <div class="mb-sm grid md:grid-cols-3 grid-cols-2 gap-3 items-stretch">
+          <button
+            v-for="(item, idx) in careerRecommendations"
+            :key="idx"
+            class="border border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
+            @click="(e) => handleCareerBtnClick(e, idx, item)"
+          >
             {{ item }}
-          </strong>
-        </li>
-      </ul>
-    </div>
-    <div class="bg-light-3 rounded-md drop-shadow-md p-xs md:p-sm mb-sm">
-      <p>{{ reasoning }}</p>
-    </div>
+          </button>
+        </div>
+        <div class="bg-light-3 rounded-md drop-shadow-md p-xs md:p-sm mb-sm">
+          <p>{{ reasoning }}</p>
+        </div>
+      </div>
+      <!-- degree-recommendations -->
+      <div v-else>
+        <div class="flex mb-2xs">
+          <button
+            class="btn btn-round btn-light-4 flex gap-2 items-center"
+            @click="onGoBack"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+              fill="currentColor"
+              class="h-[16px]"
+            >
+              <!-- !Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. -->
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+              />
+            </svg>
+            <span> Go Back </span>
+          </button>
+        </div>
+
+        <div v-if="loading" class="grid place-items-center">
+          <div class="p-md md:p-lg">
+            <div
+              class="aspect-square w-3xl rounded-full border-8 border-r-warning animate-spin"
+            />
+          </div>
+        </div>
+        <div
+          v-else-if="getActiveDegreeRecommendationInfo !== null"
+          class="mb-sm"
+        >
+          <div>
+            <div class="mb-xs">
+              <h2 class="h2-sm">
+                Career recommendation for
+                {{ getActiveDegreeRecommendationInfo.career }}
+              </h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <button
+                v-for="degree in getActiveDegreeRecommendationInfo.data"
+                :key="`${getActiveDegreeRecommendationInfo.id}-${degree.rank}`"
+                class="border border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
+                @click="
+                  (e) =>
+                    handleDegreeBtnClick(
+                      e,
+                      degree.degree_name,
+                      degree.reasoning
+                    )
+                "
+              >
+                {{ degree.degree_name }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
     <div class="flex justify-end">
       <button
         role="button"
@@ -53,5 +154,3 @@ const handleRestartClick = (e: Event) => {
     </div>
   </div>
 </template>
-
-<style scoped></style>
