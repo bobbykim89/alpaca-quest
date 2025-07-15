@@ -107,8 +107,8 @@ const getActiveDegreeRecommendationInfo =
           <div>
             <div class="mb-xs">
               <h2 class="h2-sm">
-                Career recommendation for
-                {{ getActiveDegreeRecommendationInfo.career }}
+                Degree recommendation for
+                {{ getActiveDegreeRecommendationInfo.career }}:
               </h2>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
