@@ -7,7 +7,7 @@ const questionsSchema = z.object({
   multiple_answers: z.boolean(),
 })
 
-const answersSchema = z.object({
+export const answersSchema = z.object({
   id: z.number(),
   question: z.string(),
   selections: z.array(z.string()),

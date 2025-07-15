@@ -125,7 +125,7 @@ onMounted(() => {
       </template>
     </header-horizontal>
     <div class="bg-light-4 min-h-[60dvh]">
-      <div class="container">
+      <div class="container pt-3xs">
         <Alert
           :show="alertMessage !== null"
           :color="alertColor"

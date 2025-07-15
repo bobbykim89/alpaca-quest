@@ -21,6 +21,23 @@ export type PostResponseType = {
   data: QuestionType | CareerRecommendationType
 }
 
+export type DegreeRecommendationItemType = {
+  rank: number
+  degree_name: string
+  reasoning: string
+}
+
+export type DegreeRecommendationResponseType = {
+  message: string
+  data: DegreeRecommendationItemType[]
+}
+
+export type DegreeRecommendationStoreDataType = {
+  id: number
+  career: string
+  data: DegreeRecommendationItemType[]
+}
+
 export type SubmissionType = {
   questions: QuestionType[]
   answers: AnswerType[]

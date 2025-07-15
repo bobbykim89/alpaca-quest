@@ -2,8 +2,14 @@
 import { useRequestURL } from '#app'
 import CareerRecommendation from '@/components/CareerRecommendation.vue'
 import QuizQuestions from '@/components/QuizQuestions.vue'
-import { useInitStore, useQuestionnaireStore } from '@/stores'
+import {
+  useDegreeRecommendationStore,
+  useInitStore,
+  useQuestionnaireStore,
+} from '@/stores'
+import { Modal } from '@bobbykim/manguito-theme'
 import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
 const url = useRequestURL()
 
@@ -23,8 +29,14 @@ useHead({
 
 const initStore = useInitStore()
 const questionnaireStore = useQuestionnaireStore()
+const degreeRecommendationStore = useDegreeRecommendationStore()
 const { loading } = storeToRefs(initStore)
 const { currentQuestion, recommendation } = storeToRefs(questionnaireStore)
+const { degreeRecommendationsRef, degreeLoading, currentCareerId } =
+  storeToRefs(degreeRecommendationStore)
+const modalRef = ref<InstanceType<typeof Modal>>()
+const modalTitle = ref<string>('')
+const modalDesc = ref<string>('')
 
 const onClickNext = async (val: string[]) => {
   questionnaireStore.setAnswer(val)
@@ -33,6 +45,21 @@ const onClickNext = async (val: string[]) => {
 const onClickRestart = (e: Event) => {
   e.preventDefault()
   questionnaireStore.resetState()
+  degreeRecommendationStore.resetState()
+}
+const onCareerBtnClick = async (e: Event, idx: number, career: string) => {
+  e.preventDefault()
+  await degreeRecommendationStore.getDegreeRecommendation(idx, career)
+}
+const onDegreeButtonClick = (e: Event, title: string, desc: string) => {
+  e.preventDefault()
+  modalTitle.value = title
+  modalDesc.value = desc
+  modalRef.value?.open()
+}
+const onModalClose = () => {
+  modalTitle.value = ''
+  modalDesc.value = ''
 }
 
 // onMounted(() => {
@@ -82,23 +109,28 @@ const onClickRestart = (e: Event) => {
             <career-recommendation
               :career-recommendations="recommendation.career_recommendations"
               :reasoning="recommendation.reasoning"
+              :degree-recommendations="degreeRecommendationsRef"
+              :loading="degreeLoading"
+              :current-career-id="currentCareerId"
               @reset-click="onClickRestart"
+              @career-click="onCareerBtnClick"
+              @degree-click="onDegreeButtonClick"
             />
           </div>
         </div>
       </transition>
     </div>
+    <Modal
+      ref="modalRef"
+      :title="modalTitle"
+      :class-name="['rounded-md']"
+      @close="onModalClose"
+    >
+      <template #body>
+        <div class="px-xs md:px-sm pb-xs md:pb-sm pt-2xs">
+          <p>{{ modalDesc }}</p>
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
-
-<style scoped lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
