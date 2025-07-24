@@ -14,7 +14,13 @@ const showDegreeRecommendation = ref<boolean>(false)
 const emit = defineEmits<{
   (e: 'reset-click', event: Event): void
   (e: 'career-click', event: Event, idx: number, career: string): void
-  (e: 'degree-click', event: Event, title: string, desc: string): void
+  (
+    e: 'degree-click',
+    event: Event,
+    title: string,
+    desc: string,
+    url: string
+  ): void
 }>()
 
 const onGoBack = () => {
@@ -28,8 +34,13 @@ const handleCareerBtnClick = (e: Event, idx: number, career: string) => {
   emit('career-click', e, idx, career)
   showDegreeRecommendation.value = true
 }
-const handleDegreeBtnClick = (e: Event, title: string, desc: string) => {
-  emit('degree-click', e, title, desc)
+const handleDegreeBtnClick = (
+  e: Event,
+  title: string,
+  desc: string,
+  url: string
+) => {
+  emit('degree-click', e, title, desc, url)
 }
 
 const getActiveDegreeRecommendationInfo =
@@ -121,7 +132,8 @@ const getActiveDegreeRecommendationInfo =
                     handleDegreeBtnClick(
                       e,
                       degree.degree_name,
-                      degree.reasoning
+                      degree.reasoning,
+                      degree.url
                     )
                 "
               >

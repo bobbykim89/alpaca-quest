@@ -24,6 +24,7 @@ export type PostResponseType = {
 export type DegreeRecommendationItemType = {
   rank: number
   degree_name: string
+  url: string
   reasoning: string
 }
 
