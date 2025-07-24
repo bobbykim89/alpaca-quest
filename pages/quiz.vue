@@ -37,6 +37,7 @@ const { degreeRecommendationsRef, degreeLoading, currentCareerId } =
 const modalRef = ref<InstanceType<typeof Modal>>()
 const modalTitle = ref<string>('')
 const modalDesc = ref<string>('')
+const modalUrl = ref<string>('')
 
 const onClickNext = async (val: string[]) => {
   questionnaireStore.setAnswer(val)
@@ -51,10 +52,16 @@ const onCareerBtnClick = async (e: Event, idx: number, career: string) => {
   e.preventDefault()
   await degreeRecommendationStore.getDegreeRecommendation(idx, career)
 }
-const onDegreeButtonClick = (e: Event, title: string, desc: string) => {
+const onDegreeButtonClick = (
+  e: Event,
+  title: string,
+  desc: string,
+  url: string
+) => {
   e.preventDefault()
   modalTitle.value = title
   modalDesc.value = desc
+  modalUrl.value = url
   modalRef.value?.open()
 }
 const onModalClose = () => {
@@ -128,7 +135,15 @@ const onModalClose = () => {
     >
       <template #body>
         <div class="px-xs md:px-sm pb-xs md:pb-sm pt-2xs">
-          <p>{{ modalDesc }}</p>
+          <p class="mb-xs">{{ modalDesc }}</p>
+          <div class="flex justify-end items-center">
+            <NuxtLink
+              :to="modalUrl"
+              target="_blank"
+              class="mcl-link text-success"
+              >Go to page</NuxtLink
+            >
+          </div>
         </div>
       </template>
     </Modal>
