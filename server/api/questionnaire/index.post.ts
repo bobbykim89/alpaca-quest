@@ -1,5 +1,5 @@
-import { postRequestBodySchema } from '@/dto'
-import type { PostResponseType } from '@/types/index.type'
+import { postRequestBodySchema } from '#shared/dto'
+import type { PostResponseType } from '#shared/types/index.type'
 import { readValidatedBody } from 'h3'
 
 export default defineEventHandler(async (event) => {

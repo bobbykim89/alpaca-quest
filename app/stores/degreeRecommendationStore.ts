@@ -1,7 +1,7 @@
 import type {
   DegreeRecommendationResponseType,
   DegreeRecommendationStoreDataType,
-} from '@/types/index.type'
+} from '#shared/types/index.type'
 import { defineStore, storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useAlertStore } from './alertStore'
