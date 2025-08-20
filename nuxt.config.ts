@@ -2,13 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@pinia/nuxt',
-    '@nuxt/image',
-    '@nuxtjs/tailwindcss',
-  ],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@pinia/nuxt', '@nuxt/image'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'page', mode: 'out-in' },
@@ -69,11 +63,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: ['~/assets/css/page_transition.scss'],
-  tailwindcss: {
-    configPath: 'tailwind.config.ts',
-    exposeConfig: false,
-    viewer: true,
+  css: ['~/assets/css/page_transition.scss', '~/assets/css/styles.css'],
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+    },
   },
   runtimeConfig: {
     alpacaApiUrl: process.env.ALPACA_API_URL,

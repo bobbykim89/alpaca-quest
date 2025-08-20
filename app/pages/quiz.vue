@@ -1,15 +1,16 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { useRequestURL } from '#app'
-import CareerRecommendation from '@/components/CareerRecommendation.vue'
-import QuizQuestions from '@/components/QuizQuestions.vue'
+import { Modal } from '@bobbykim/manguito-theme'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
+import CareerRecommendation from '~/components/CareerRecommendation.vue'
+import QuizQuestions from '~/components/QuizQuestions.vue'
 import {
   useDegreeRecommendationStore,
   useInitStore,
   useQuestionnaireStore,
-} from '@/stores'
-import { Modal } from '@bobbykim/manguito-theme'
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+} from '~/stores'
 
 const url = useRequestURL()
 
@@ -92,13 +93,13 @@ const onModalClose = () => {
 <template>
   <div class="w-full lg:max-w-[60%] mx-auto px-2xs py-md">
     <div
-      class="bg-light-1 border rounded-md drop-shadow-md px-xs py-sm md:px-sm md:py-md"
+      class="bg-light-1 border border-light-4 rounded-md drop-shadow-md px-xs py-sm md:px-sm md:py-md"
     >
       <transition name="fade" mode="out-in">
         <div v-if="loading" class="grid place-items-center">
           <div class="p-md md:p-lg">
             <div
-              class="aspect-square w-3xl rounded-full border-8 border-r-warning animate-spin"
+              class="aspect-square w-3xl rounded-full border-8 border-light-3 border-r-warning animate-spin"
             />
           </div>
         </div>

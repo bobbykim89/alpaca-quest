@@ -3,7 +3,7 @@ import type {
   CareerRecommendationType,
   PostResponseType,
   QuestionType,
-} from '@/types/index.type'
+} from '#shared/types/index.type'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useAlertStore } from './alertStore'

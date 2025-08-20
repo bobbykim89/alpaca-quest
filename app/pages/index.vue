@@ -1,7 +1,8 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="w-full lg:max-w-[60%] mx-auto px-2xs py-md">
     <div
-      class="bg-light-1 border rounded-md drop-shadow-md px-xs py-sm md:px-md md:py-md"
+      class="bg-light-1 border border-light-4 rounded-md drop-shadow-md px-xs py-sm md:px-md md:py-md"
     >
       <div class="flex flex-col justify-center items-center">
         <NuxtImg src="/img/logo512.webp" width="384" alt="ALPACAQuest logo" />
@@ -30,5 +31,3 @@
 </template>
 
 <script setup lang="ts"></script>
-
-<style scoped></style>
