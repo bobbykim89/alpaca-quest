@@ -2,6 +2,14 @@
   "name": "alpaca-quest",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "description": "AI-powered app that helps you discover the best career for you through personalized questions and smart recommendations.",
+  "repository": {
+    "url": "https://github.com/bobbykim89/alpaca-quest.git",
+    "type": "git"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

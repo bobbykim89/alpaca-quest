@@ -69,11 +69,6 @@ export default defineNuxtConfig({
       '@tailwindcss/postcss': {},
     },
   },
-  // tailwindcss: {
-  //   configPath: 'tailwind.config.ts',
-  //   exposeConfig: false,
-  //   viewer: true,
-  // },
   runtimeConfig: {
     alpacaApiUrl: process.env.ALPACA_API_URL,
   },
