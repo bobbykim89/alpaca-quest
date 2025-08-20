@@ -1,4 +1,4 @@
-import { useInitStore } from '@/stores'
+import { useInitStore } from '~/stores'
 
 export default defineNuxtPlugin({
   name: 'stores-init',

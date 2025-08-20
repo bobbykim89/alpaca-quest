@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QuizQuestionComponentProps } from '@/types/index.type'
+import type { QuizQuestionComponentProps } from '#shared/types/index.type'
 import { MclCheckbox, MclInputRadio } from '@bobbykim/mcl-forms'
 
 const props = defineProps<QuizQuestionComponentProps>()

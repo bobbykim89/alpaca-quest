@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DegreeRecommendationStoreDataType } from '@/types/index.type'
+import type { DegreeRecommendationStoreDataType } from '#shared/types/index.type'
 
 const props = defineProps<{
   careerRecommendations: string[]
