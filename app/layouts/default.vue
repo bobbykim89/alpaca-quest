@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { useAlertStore } from '@/stores'
 import { Alert, HeaderHorizontal } from '@bobbykim/manguito-theme'
 import type { MenuItemType, SocialUrl } from '@bobbykim/mcl-footer'
 import { MclFooterA } from '@bobbykim/mcl-footer'
 import { storeToRefs } from 'pinia'
+import { useAlertStore } from '~/stores'
 
 const router = useRouter()
 const tradmarkYear = ref<number>()

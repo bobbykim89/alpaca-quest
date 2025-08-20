@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="w-full lg:max-w-[60%] mx-auto px-2xs py-md">
     <div
@@ -30,5 +31,3 @@
 </template>
 
 <script setup lang="ts"></script>
-
-<style scoped></style>

@@ -1,5 +1,5 @@
-import { postRecommendationRequestBodySchema } from '@/dto'
-import type { DegreeRecommendationResponseType } from '@/types/index.type'
+import { postRecommendationRequestBodySchema } from '#shared/dto'
+import type { DegreeRecommendationResponseType } from '#shared/types/index.type'
 import { readValidatedBody } from 'h3'
 
 export default defineEventHandler(async (event) => {
