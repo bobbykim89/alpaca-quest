@@ -72,7 +72,7 @@ const getActiveDegreeRecommendationInfo =
           <button
             v-for="(item, idx) in careerRecommendations"
             :key="idx"
-            class="border border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
+            class="border-light-4 border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
             @click="(e) => handleCareerBtnClick(e, idx, item)"
           >
             {{ item }}
@@ -107,7 +107,7 @@ const getActiveDegreeRecommendationInfo =
         <div v-if="loading" class="grid place-items-center">
           <div class="p-md md:p-lg">
             <div
-              class="aspect-square w-3xl rounded-full border-8 border-r-warning animate-spin"
+              class="aspect-square w-3xl rounded-full border-8 border-light-4 border-r-warning animate-spin"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ const getActiveDegreeRecommendationInfo =
               <button
                 v-for="degree in getActiveDegreeRecommendationInfo.data"
                 :key="`${getActiveDegreeRecommendationInfo.id}-${degree.rank}`"
-                class="border border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
+                class="border-light-4 border-2 rounded-md drop-shadow-md p-xs md:px-xs md:py-md h-full flex justify-center items-center hover:bg-light-3 transition-colors ease-linear duration-300 font-bold"
                 @click="
                   (e) =>
                     handleDegreeBtnClick(
